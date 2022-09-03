@@ -36,6 +36,9 @@ namespace API
                 //^^CONFIGURATION HAS BEEN INJECTED INTO THIS STARTUP CLASS BUT IT ORIGINATES FROM: APPSETTINGS.DEVELOPMENT.JSON
                     //^^appsettings.Development.json is where we can define our connection strings and other configs.
             });
+
+            //Adding CORS to allow cross origin api requests:
+            services.AddCors();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -51,6 +54,12 @@ namespace API
             // app./seHttpsRedirection();
 
             app.UseRouting();
+
+            //CORS middleware and its options for cross-origin API requests from our client app:
+            app.UseCors(opt => 
+            {
+                opt.AllowAnyHeader().AllowAnyMethod().WithOrigins("http://localhost:3000");
+            });
 
             app.UseAuthorization();
 
