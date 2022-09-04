@@ -6,12 +6,17 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { Product } from "../../../models/product";
 import { Avatar, CardHeader } from '@mui/material';
+import { Link, useHistory } from 'react-router-dom';
+
 
 interface Props {
     product: Product;
 }
 
 export default function ProductCard({ product }: Props) {
+    
+    const history = useHistory()
+
     return (
         <Card>
             <CardHeader 
@@ -42,7 +47,8 @@ export default function ProductCard({ product }: Props) {
             </CardContent>
             <CardActions>
                 <Button size="small">Add to cart</Button>
-                <Button size="small">View</Button>
+                {/* <Button LinkComponent={Link} to={} size="small">View</Button> */}
+                <Button LinkComponent={Link} onClick={() => history.push(`/catalog/${product.id}`)} size="small">View</Button>
             </CardActions>
         </Card>
     )

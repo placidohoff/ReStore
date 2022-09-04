@@ -2,15 +2,19 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './layout/styles.css';
 import App from './layout/App';
+import { BrowserRouter } from 'react-router-dom';
 // import reportWebVitals from '../reportWebVitals';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+  // <React.StrictMode>
+    <BrowserRouter>
+      <App /> 
+    </BrowserRouter>
+  // </React.StrictMode>
+  //^^Removed strict mode since the useHistory() was not working properly with it being there
 );
 
 // If you want to start measuring performance in your app, pass a function
